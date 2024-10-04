@@ -1,0 +1,12 @@
+[project]
+name = "Demand Predictor"
+version = "0.1.0"
+description = "A perceptor to predict demand based on demand planner experience"
+authors = [{ name = "John Doe", email = "john.doe@composabl.com" }]
+dependencies = [
+    "composabl-core"
+]
+
+[composabl]
+type = "perceptor"
+entrypoint = "demand_predict.perceptor:DemoPerceptor"
