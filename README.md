@@ -17,9 +17,10 @@ These are the kinds of considerations that are difficult for humans and traditio
 That’s why agents engineered with Machine Teaching are so valuable for production scheduling use cases.
 
 ### Goals and Strategies for the Agent
-The top-level goal for the bakery is to maximize ROI – that is, make as much profit as possible by increasing revenues and minimizing costs. To do this, it needs to produce the right amount of each of its products, using the workers and equipment it has available, to meet demand and maximize profit.
+The top-level goal for the bakery is to maximize ROI – that is, make as much profit as possible by increasing revenues and minimizing costs. To do this, it needs to produce the right amount of each of its products, using the workers and equipment it has available to meet demand and maximize profit.
 
 But what does that look like? There are many different strategies that might be used to try to reach this goal. No one strategy is perfect, and different approaches might work better at different times depending on the conditions.
 
-Image
+![Decision Making](https://github.com/user-attachments/assets/f440175c-51c5-46cf-b25a-38ab600027d7)
+
 
