@@ -22,5 +22,3 @@ The top-level goal for the bakery is to maximize ROI – that is, make as much p
 But what does that look like? There are many different strategies that might be used to try to reach this goal. No one strategy is perfect, and different approaches might work better at different times depending on the conditions.
 
 ![Decision Making](https://github.com/user-attachments/assets/f440175c-51c5-46cf-b25a-38ab600027d7)
-
-
