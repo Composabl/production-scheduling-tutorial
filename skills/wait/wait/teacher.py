@@ -41,8 +41,7 @@ class BaseTeacher(SkillTeacher):
         return reward
 
     async def compute_action_mask(self, transformed_obs, action):
-        action_mask = [int(x) for x in list(transformed_obs.values())[:25]]
-        return np.array(action_mask)
+        return None
 
     async def compute_success_criteria(self, transformed_obs, action):
         return False
