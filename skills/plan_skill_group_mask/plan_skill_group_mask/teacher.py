@@ -2,7 +2,7 @@ import math
 
 import numpy as np
 from composabl import Teacher, SkillTeacher
-from plan_skill_group.sensors import sensors
+from plan_skill_group_mask.sensors import sensors
 
 class BaseTeacher(SkillTeacher):
     def __init__(self, *args, **kwargs):
@@ -41,7 +41,10 @@ class BaseTeacher(SkillTeacher):
         return reward
 
     async def compute_action_mask(self, transformed_obs, action):
-        return None
+        if float(transformed_obs['completed_cupcakes']) >= float(transformed_obs['cookies_demand_predict']):
+            return np.array([1] + ([0] * 24))
+        else:
+            return np.array([1] * 25)
 
     async def compute_success_criteria(self, transformed_obs, action):
         return False
