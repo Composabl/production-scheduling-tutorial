@@ -1,5 +1,4 @@
 from typing import Dict, List
-
 from composabl_core import SkillController
 import numpy as np
 from rule_based_controller.sensors import sensors

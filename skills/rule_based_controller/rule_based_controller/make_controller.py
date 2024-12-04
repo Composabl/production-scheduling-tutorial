@@ -248,5 +248,98 @@ class MakeCakeController(SkillController):
                 action = 15
 
         # DECORATE
-        if obs['baker_1_time_remaining'] == 0:
-            if obs['oven_1_recipe'] == 3
+        if obs['baker_1_time_remaining'] == 0: #chip
+            if obs['oven_1_recipe'] == 3:
+                action = 16
+            elif obs['oven_2_recipe'] == 3:
+                action = 17
+            elif obs['oven_3_recipe'] == 3:
+                action = 18
+
+        elif obs['baker_3_time_remaining'] == 0: #eclair
+            if obs['oven_1_recipe'] == 3:
+                action = 19
+            elif obs['oven_2_recipe'] == 3:
+                action = 20
+            elif obs['oven_3_recipe'] == 3:
+                action = 21
+
+        elif obs['baker_4_time_remaining'] == 0: #reesee
+            if obs['oven_1_recipe'] == 3:
+                action = 22
+            elif obs['oven_2_recipe'] == 3:
+                action = 23
+            elif obs['oven_3_recipe'] == 3:
+                action = 24
+
+
+        return action
+    
+    async def compute_success_criteria(self, transformed_obs, action):
+        return False
+
+    async def compute_termination(self, transformed_obs, action):
+        return False
+
+# The WaitController class provides a no-action state for idle periods.
+class WaitController(SkillController):
+    def __init__(self, *args, **kwargs):
+        """
+        Initializes the WaitController with tracking variables.
+        Attributes:
+            total_time: Cumulative time spent in idle state.
+            obs_history: Records the history of sensor observations.
+        """
+        self.total_time = 0
+        self.obs_history = []
+
+    async def transform_sensors(self, obs):
+        """
+        Args:
+            obs: Sensor data to process.
+
+        Returns:
+            The unmodified sensor data.
+        """
+        return obs
+
+    async def filtered_sensor_space(self):
+        """
+        Returns:
+            A list of sensor names relevant for waiting periods.
+        """
+        return [s.name for s in sensors]
+
+    async def compute_action(self, obs):
+        """
+        Executes no action during idle periods.
+
+        Args:
+            obs: Current sensor data.
+
+        Returns:
+            action: Always returns 0 (no action).
+        """
+        sensors_name = [s.name for s in sensors]
+        obs = dict(map(lambda i, j: (i, j), sensors_name, obs))
+        self.total_time += 1
+
+        # Append the current observation to history.
+        self.obs_history.append(obs)
+
+        action = 0  # No action during wait.
+        return action
+
+    async def compute_success_criteria(self, transformed_obs, action):
+        """
+        Defines the success criteria for idle periods.
+        Currently always returns False (no success criteria defined).
+        """
+        return False
+
+    async def compute_termination(self, transformed_obs, action):
+        """
+        Defines the termination criteria for idle periods.
+        Currently always returns False (no termination criteria defined).
+        """
+        return False
